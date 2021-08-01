@@ -1,5 +1,26 @@
 let maxAttempts = 100, n = 0;
 
+
+/**
+ * 
+ * @param {Function} callback 
+ * @returns {MutationCallback}
+ */
+const createObserver = (callback) => {
+	/**
+	 * 
+	 * @param {MutationRecord[]} list
+	 */
+	const mutationCb = (list) => {
+		for(const a of list) {
+			a.target.display = 'none';
+		}
+	};
+
+	return mutationCb;
+}
+
+
 /**
  * on Twitter.com: hide the "What's happening"
  * panel by default. A lot of fear-mongering
@@ -25,10 +46,17 @@ const checker = () => {
 			}
 		};
 
-		let fakeStory = anchor;
-		while (fakeStory = fakeStory.nextElementSibling) {
-			fakeStory.style.display = 'none';
-		}
+		const hideFakeNews = () => {
+			let fakeStory = anchor;
+			while (fakeStory = fakeStory.nextElementSibling) {
+				fakeStory.style.display = 'none';
+			}
+		};
+
+		hideFakeNews();
+
+		const observer = new MutationObserver(createObserver(hideFakeNews));
+		observer.observe(fakeNews, {childList: true})
 	}
 }
 
