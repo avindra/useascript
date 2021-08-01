@@ -66,13 +66,19 @@ const doIt = () => {
 	const pid = setInterval(checker, 300);
 };
 
+
+window.onpopstate = doIt;
+
 // https://stackoverflow.com/a/64927639/270302
-window.history.pushState = new Proxy(window.history.pushState, {
-	apply: (target, thisArg, argArray) => {
-		doIt();
-		return target.apply(thisArg, argArray);
-	},
+['pushState', 'replaceState'].forEach(type => {
+	window.history[type] = new Proxy(window.history[type], {
+		apply: (target, thisArg, argArray) => {
+			doIt();
+			return target.apply(thisArg, argArray);
+		},
+	});
 });
+
 
 
 doIt();
