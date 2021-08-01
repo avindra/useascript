@@ -21,7 +21,7 @@ document.head.appendChild(sheet);
 /**
  * Show channel ID on pages that use "pretty" URLS
  */
-if (/^\/c\//.test(location.pathname)) {
+if (/^\/(?:c|user)\//.test(location.pathname)) {
 	const chanId = document.createElement('a');
 	const meta = ytInitialData.metadata.channelMetadataRenderer;
 
