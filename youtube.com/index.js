@@ -1,30 +1,35 @@
 /**
  * YouTube userscript.
  * 
- * All it does right now is remove a garbage <div>
- * node from the transcript view.
  */
 
-const targetNode = document.querySelector("ytd-watch-flexy");
-
-
-// Callback function to execute when mutations are observed
-const watchTranscript = function(mutationsList, observer) {
-		for(const mutation of mutationsList) {
-			if (mutation.type === 'childList') {
-				const transcript = targetNode.querySelector("ytd-transcript-renderer");
-				if (transcript) {
-					const garbage = transcript.querySelector("#content");
-					if (garbage) {
-						garbage.parentNode.removeChild(garbage);
-						return;
-					}
-				}
-			}
+/**
+ * Remove garbage <div> from transcript view
+ */
+const styles = `
+	ytd-transcript-renderer #content {
+		display: none !important;
 	}
-};
+`
 
-const observer = new MutationObserver(watchTranscript);
-const config = { childList: true, subtree: true };
+const sheet = document.createElement("style")
+sheet.type = "text/css";
+sheet.innerText = styles;
+document.head.appendChild(sheet);
 
-observer.observe(targetNode, config);
+
+/**
+ * Show channel ID on pages that use "pretty" URLS
+ */
+if (/^\/c\//.test(location.pathname)) {
+	const chanId = document.createElement('a');
+	const meta = ytInitialData.metadata.channelMetadataRenderer;
+
+	chanId.textContent = meta.externalId;
+	chanId.href = meta.channelUrl;
+
+	const p = document.createElement('p');
+	p.appendChild(chanId);
+
+	document.getElementById("channel-name").appendChild(p);
+}
