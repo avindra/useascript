@@ -8,7 +8,7 @@
  */
 const styles = `
 	ytd-transcript-renderer #content {
-		display: none;
+		display: none !important;
 	}
 `
 
