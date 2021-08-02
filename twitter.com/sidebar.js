@@ -6,7 +6,10 @@ export const setup = (callback) => {
 	const root = document.querySelector('header nav');
 	const link = root.firstChild.nextElementSibling;
 	const button = link.cloneNode(true);
-	button.querySelector('span').textContent = 'Script';
+	const label = button.querySelector('span');
+	if (label) { // label is hidden at smaller resolutions
+		label.textContent = 'Script';
+	}
 	button.removeAttribute('href');
 	button.onclick = callback;
 
