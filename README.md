@@ -34,3 +34,7 @@ Sample usage can be found below.
     document.body.appendChild(el);
 })();
 ```
+
+## License
+
+The source code is fully licensed under `GPL-3.0-only`. See [COPYING](./COPYING) for more info.
