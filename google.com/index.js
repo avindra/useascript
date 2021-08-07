@@ -16,9 +16,8 @@ onBrowse(() => {
 		lastKey = key;
 	}
 
-	params.sort();
-
 	if (params.get('tbm')==='isch') {
+		params.sort();
 		const Q = params.get('q');
 		if (Q && lastKey !== 'q') { // place query at the end (ezier editing)
 			params.delete('q');
