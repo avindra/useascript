@@ -1,3 +1,5 @@
+import { onBrowse } from "../util.js";
+
 const doIt = () => {
 	let maxAttempts = 100, n = 0, hidden = true;
 
@@ -69,17 +71,5 @@ const doIt = () => {
 
 
 export const setup = () => {
-	window.onpopstate = doIt;
-
-	// https://stackoverflow.com/a/64927639/270302
-	['pushState', 'replaceState'].forEach(type => {
-		window.history[type] = new Proxy(window.history[type], {
-			apply: (target, thisArg, argArray) => {
-				doIt();
-				return target.apply(thisArg, argArray);
-			},
-		});
-	});
-
-	doIt();
+	onBrowse(doit);
 }
