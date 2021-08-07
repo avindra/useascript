@@ -71,5 +71,5 @@ const doIt = () => {
 
 
 export const setup = () => {
-	onBrowse(doit);
+	onBrowse(doIt);
 }
