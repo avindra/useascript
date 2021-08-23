@@ -11,6 +11,7 @@ switch(location.host) {
 		const domain = location.host.replace('www.', '');
 
 		switch(domain) {
+			case 'holy-bhagavad-gita.org':
 			case 'google.com':
 			case 'twitter.com':
 			case 'youtube.com':
