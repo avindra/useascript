@@ -22,9 +22,7 @@ Sample usage can be found below.
 /**
  * @param {Element} el
  */
-(function(el) {
-    'use strict';
-
+(el => {
     el.type = "module";
     el.src = 'https://dra.vin/useascript/index.js';
 
