@@ -37,3 +37,7 @@ if (verse) {
 		}
 	}
 }
+
+if (location.pathname.toLowerCase() === '/index') {
+	document.querySelector('aside').remove();
+}
