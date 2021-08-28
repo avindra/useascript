@@ -3,6 +3,7 @@ let target;
 
 switch(location.host) {
 	case 'github.com':
+	case 'twitter.com':
 	case 'developer.mozilla.org': {
 		target = location.host;
 		break;
@@ -15,7 +16,6 @@ switch(location.host) {
 			case 'holy-bhagavad-gita.org':
 			case 'google.com':
 			case 'npmjs.com':
-			case 'twitter.com':
 			case 'youtube.com':
 				target = domain;
 		}
