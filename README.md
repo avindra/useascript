@@ -7,7 +7,7 @@ Brought to you by [Avindra Goolcharan](https://dra.vin/).
 
 ## Usage
  
- * [Install from GitHub](https://github.com/avindra/useascript/raw/main/index.js) ([Source](./hook.user.js))
+ * [Install from GitHub](https://github.com/avindra/useascript/raw/main/hook.user.js) ([Source](./hook.user.js))
 
 Note that, as per the `@match` directive, it will run on <strong>all websites</strong>.
 
