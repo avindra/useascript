@@ -14,6 +14,7 @@ switch(location.host) {
 			case 'britishmuseum.org':
 			case 'holy-bhagavad-gita.org':
 			case 'google.com':
+			case 'npmjs.com':
 			case 'twitter.com':
 			case 'youtube.com':
 				target = domain;
