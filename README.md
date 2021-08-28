@@ -1,33 +1,18 @@
 # useascript
 
-`useascript` is a compendium of userscripts for the Internet.
+`useascript` is a repository of userscripts for a clearer Internet 🌃
 
-Some would say its a _`metaverse`_.
+
+Brought to you by [Avindra Goolcharan](https://dra.vin/).
 
 ## Usage
+ 
+ * [Install from GitHub](https://github.com/avindra/useascript/raw/main/hook.user.js) ([Source](./hook.user.js))
 
-Sample usage can be found below.
+Note that, as per the `@match` directive, it will run on <strong>all websites</strong>.
 
-```js
-// ==UserScript==
-// @name         useascript-hook
-// @namespace    https://dra.vin/
-// @version      0.1
-// @description  Loader for useascript, a compendium of userscripts for the Web
-// @author       You
+```
 // @match        *://*/*
-// @grant        none
-// ==/UserScript==
-
-/**
- * @param {Element} el
- */
-(el => {
-    el.type = "module";
-    el.src = 'https://dra.vin/useascript/index.js';
-
-    document.body.appendChild(el);
-})(document.createElement("script"));
 ```
 
 ## License
