@@ -1,20 +1,23 @@
 
-const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/([^]+)\/(.+)/;
+import {onBrowse} from './../util.js';
 
-const fileMatch = location.pathname.match(fileRegex);
+onBrowse(() => {
+	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/([^]+)\/(.+)/;
 
-if (fileMatch) {
-	const btns = document.querySelector(".BtnGroup");
-	if (btns) {
-		const [, user, repo, branch, file] = fileMatch;
+	const fileMatch = location.pathname.match(fileRegex);
 
-		const jsd = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
-		const a = document.createElement('a');
-		a.href = jsd;
-		a.textContent = `JsDelivr`;
-		a.className = `btn-sm btn BtnGroup-item`;
+	if (fileMatch) {
+		const btns = document.querySelector(".BtnGroup");
+		if (btns) {
+			const [, user, repo, branch, file] = fileMatch;
 
-		btns.appendChild(a);
+			const jsd = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
+			const a = document.createElement('a');
+			a.href = jsd;
+			a.textContent = `JsDelivr`;
+			a.className = `btn-sm btn BtnGroup-item`;
+
+			btns.appendChild(a);
+		}
 	}
-
-}
+});

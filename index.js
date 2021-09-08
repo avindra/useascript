@@ -4,8 +4,14 @@ let target;
 switch(location.host) {
 	case 'github.com':
 	case 'twitter.com':
+	case 'mobile.twitter.com':
 	case 'developer.mozilla.org': {
-		target = location.host;
+		/**
+		 * Get root domain
+		 * @see https://stackoverflow.com/a/61381607/270302
+		 */
+		const rootDomain =  location.host.split('.').slice(-2).join('.');
+		target = rootDomain;
 		break;
 	}
 	default: {
@@ -24,5 +30,6 @@ switch(location.host) {
 
 
 if (target) {
+	console.log(`loading script`, new Date(), target);
 	await import(`./${target}/index.js`);
 }
