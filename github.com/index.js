@@ -2,6 +2,12 @@
 import {onBrowse} from './../util.js';
 
 onBrowse(() => {
+
+	// redir deprecated account
+	if (location.pathname === '/mediawiki') {
+		location.pathname = '/wikimedia';
+	}
+
 	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/([^]+)\/(.+)/;
 
 	const fileMatch = location.pathname.match(fileRegex);
@@ -20,4 +26,5 @@ onBrowse(() => {
 			btns.appendChild(a);
 		}
 	}
+
 });
