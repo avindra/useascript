@@ -10,11 +10,12 @@
 
 /**
  *
- * @param {Element} el A fresh <script> tag
+ * @param {Document} d A document to work on
  */
-(el => {
-    el.type = 'module';
-    el.src = 'https://dra.vin/useascript/index.js';
+(d => {
+    const s = d.createElement('script');
+    s.type = 'module';
+    s.src = 'https://dra.vin/useascript/index.js';
 
-    document.body.appendChild(el);
-})(document.createElement('script'));
+    d.body.appendChild(s);
+})(document);

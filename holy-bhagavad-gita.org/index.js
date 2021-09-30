@@ -1,4 +1,8 @@
 /**
+ * @see  https://www.wikidata.org/wiki/Q108659922
+ */
+
+/**
  * replace battlefield image with solid color
  */
 const b = document.body;
