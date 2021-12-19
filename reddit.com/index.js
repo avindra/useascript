@@ -13,19 +13,22 @@ sheet.innerText = styles;
 document.head.appendChild(sheet);
 
 
-const sections = location.pathname.split(/(?!^)\//);
-
-
 // Select the node that will be observed for mutations
 const targetNode = document.querySelector('.ListingLayout-outerContainer');
 
 // Options for the observer (which mutations to observe)
 const config = { attributes: true, childList: true, subtree: true };
 
-const observer = new MutationObserver((mutations, observer) => {
+let runs = 0;
+const observer = new MutationObserver((mutations, _) => {
 	for (const mut of mutations) {
+		if(mut.target.tagName != 'DIV') {
+			continue;
+		}
+
 		if (mut.type === 'childList') {
-			run_it();
+			run_it(mut.target);
+			console.log("ran it", ++runs, 'times', mut);
 		} 
 	}
 });
@@ -33,9 +36,18 @@ const observer = new MutationObserver((mutations, observer) => {
 observer.observe(targetNode, config);
 
 
-function run_it() {
+/**
+ * 
+ */
+function run_it(node = document) {
+if(node.marked) {
+	console.log('avoided extraneous call')
+	return;
+}
+
+const sections = location.pathname.split(/(?!^)\//);
 const loc = sections[0];
-if(loc == '/user') [...document.querySelectorAll(".Comment a")].forEach(element => {
+if(['/user', '/r'].includes(loc)) [...node.querySelectorAll("a")].forEach(element => {
 	const href=element.getAttribute("href");;
 	if(!href) return;
 	if(element.title) {
@@ -52,14 +64,7 @@ if(loc == '/user') [...document.querySelectorAll(".Comment a")].forEach(element 
 		if (href == element.textContent) element.textContent = "{Image}";
 	} else if(href.indexOf("/")==0) {
 	
-	} else if(/http:\/\/(?:www\.)?reddit\.com/.test(href)) {
-		if(/user\/([^\/]+)$/.test(element.textContent)) element.textContent = "{User} " + RegExp.$1;
-		else if (/\/r\/([^\/]+)\/?(?:comments\/[^\/]+\/(.+))?/.test(href)) {
-			if(element.textContent == href) element.textContent = "";
-			var subreddit = RegExp.$1;
-			if(RegExp.$2)
-				element.innerHTML = element.textContent + " <small>{" + RegExp.$2.replace(/_/g, " ").replace(/\/.*?$/, "") + " / "+subreddit+"}</small>";
-		}
+	} else if(/https?:\/\/(?:www\.)?reddit\.com/.test(href)) {
 		element.className += " favicon";
 		element.style.color = "crimson";
 		element.style.backgroundImage = "url(\"http://www.reddit.com/static/favicon.ico\")";
@@ -84,11 +89,12 @@ if(loc == '/user') [...document.querySelectorAll(".Comment a")].forEach(element 
 		element.style.color = "black";
 		element.style.backgroundImage = "url(\"http://en.wikipedia.org/favicon.ico\")";
 		element.className += " favicon";
-	} else {
+	} else if(!element.href.startsWith( location.protocol +'//' + location.host)) {
 		element.className += " favicon";
 		element.style.color = "darkGreen";
 		element.style.backgroundImage = "url(\"https://upload.wikimedia.org/wikipedia/commons/0/0f/External-link-ltr-icon_Dark.png\")";
 		element.style.paddingRight = "11px";
 	}
 });
+node.marked = true;
 }
