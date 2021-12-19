@@ -1,3 +1,4 @@
+setTimeout(() => {
 let bar = document.getElementById('signUpModal');
 
 if (bar) {
@@ -12,3 +13,4 @@ if (bar) bar.remove();
 bar = document.getElementById('signUpFooter');
 
 if (bar) bar.remove();
+}, 500);
