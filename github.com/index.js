@@ -13,7 +13,7 @@ onBrowse(() => {
 	const fileMatch = location.pathname.match(fileRegex);
 
 	if (fileMatch) {
-		const btns = document.querySelector(".BtnGroup");
+		const btns = document.querySelector(".repository-content .BtnGroup");
 		if (btns) {
 			const [, user, repo, branch, file] = fileMatch;
 
