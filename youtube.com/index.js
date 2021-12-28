@@ -1,24 +1,4 @@
 /**
- * YouTube userscript.
- * 
- */
-
-/**
- * Remove garbage <div> from transcript view
- */
-const styles = `
-	ytd-transcript-renderer #content {
-		display: none !important;
-	}
-`
-
-const sheet = document.createElement("style")
-sheet.type = "text/css";
-sheet.innerText = styles;
-document.head.appendChild(sheet);
-
-
-/**
  * Show channel ID on pages that use "pretty" URLS
  */
 if (/^\/(?:c|user)\//.test(location.pathname) || document.getElementById('channel-header')) {
