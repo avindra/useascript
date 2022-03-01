@@ -4,8 +4,7 @@ let target;
 switch(location.host) {
 	case 'github.com':
 	case 'twitter.com':
-	case 'mobile.twitter.com':
-	case 'developer.mozilla.org': {
+	case 'mobile.twitter.com': {
 		/**
 		 * Get root domain
 		 * @see https://stackoverflow.com/a/61381607/270302
