@@ -42,6 +42,8 @@ if (verse) {
 	}
 }
 
-if (location.pathname.toLowerCase() === '/index') {
+
+
+if (['/index', '/dedication', '/introduction','/publishers-note'].includes(location.pathname.toLowerCase())) {
 	document.querySelector('aside').remove();
 }
