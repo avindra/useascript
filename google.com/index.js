@@ -1,5 +1,4 @@
-import {onBrowse} from './../util.js';
-
+import { onBrowse } from './../util.js';
 
 /**
  * Ensure that "q=" is the last parameter.
@@ -16,13 +15,14 @@ onBrowse(() => {
 		lastKey = key;
 	}
 
-	if (params.get('tbm')==='isch') {
+	if (params.get("tbm") === "isch") {
 		params.sort();
-		const Q = params.get('q');
-		if (Q && lastKey !== 'q') { // place query at the end (ezier editing)
-			params.delete('q');
-			params.set('q', Q);
-			const nextHref = location.pathname + '?'+ params.toString();
+		const Q = params.get("q");
+		if (Q && lastKey !== "q") {
+			// place query at the end (ezier editing)
+			params.delete("q");
+			params.set("q", Q);
+			const nextHref = location.pathname + "?" + params.toString();
 			location.href = nextHref;
 		}
 	}

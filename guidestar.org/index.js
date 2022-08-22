@@ -1,16 +1,23 @@
-setTimeout(() => {
-let bar = document.getElementById('signUpModal');
+setTimeout(
+	() => {
+		let bar = document.getElementById("signUpModal");
 
-if (bar) {
-	bar.remove();
-	document.body.className = '';
-}
+		if (bar) {
+			bar.remove();
+			document.body.className = "";
+		}
 
-bar = document.querySelector('.modal-backdrop');
+		bar = document.querySelector(".modal-backdrop");
 
-if (bar) bar.remove();
+		if (bar) {
+			bar.remove();
+		}
 
-bar = document.getElementById('signUpFooter');
+		bar = document.getElementById("signUpFooter");
 
-if (bar) bar.remove();
-}, 500);
+		if (bar) {
+			bar.remove();
+		}
+	},
+	500,
+);
