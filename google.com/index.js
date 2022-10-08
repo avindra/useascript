@@ -1,4 +1,4 @@
-import { onBrowse } from './../util.js';
+import { onBrowse } from "./../util.js";
 
 /**
  * Ensure that "q=" is the last parameter.
@@ -22,7 +22,7 @@ onBrowse(() => {
 			// place query at the end (ezier editing)
 			params.delete("q");
 			params.set("q", Q);
-			const nextHref = location.pathname + "?" + params.toString();
+			const nextHref = `${location.pathname}?${params.toString()}`;
 			location.href = nextHref;
 		}
 	}
