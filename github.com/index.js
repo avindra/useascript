@@ -1,7 +1,7 @@
 import { onBrowse } from './../util.js';
 
 onBrowse(() => {
-	// redir deprecated account
+	// redir deprecated account. TODO: delet this
 	if (location.pathname === "/mediawiki") {
 		location.pathname = "/wikimedia";
 	}
@@ -23,5 +23,26 @@ onBrowse(() => {
 
 			btns.appendChild(a);
 		}
+	} else if(/\/compare\//.test(location.pathname)) {
+		const commits = document.querySelectorAll("#commits_bucket .Details:not(.branch-action-item)");
+		if (commits.length === 0) {
+			return;
+		}
+
+
+		const ctr = document.querySelector(".range-editor");
+		if (ctr){
+			const gen = document.createElement("button");
+			gen.textContent = `Show ${commits.length} commits`;
+			gen.onclick = () => {
+				const all = Array.from(commits).map( node => {
+					const inner = node.querySelector('p');
+					return inner.textContent.trim().replace(/[\s\n…]+$/g, '');
+				});
+				console.log(all, all.join("\n"));
+			};
+			ctr.appendChild(gen);
+		}
 	}
+
 });

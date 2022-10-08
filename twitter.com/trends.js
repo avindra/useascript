@@ -1,4 +1,4 @@
-import { onBrowse, sleep } from "../util.js";
+import { onBrowse } from "../util.js";
 
 
 const getNews = () => (
