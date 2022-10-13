@@ -27,3 +27,27 @@ onBrowse(() => {
 		}
 	}
 });
+
+
+/**
+ * Prevent google from mangling URLs
+ *
+ * @see https://gist.github.com/chris-kwl/6172eb00971ab81bf99a213682b42e21
+ */
+const disableOnmousedown = function (node) {
+	const as = node.getElementsByTagName('a');
+	for (let a = as[0], i = 1; a; i++) {
+			a.removeAttribute('data-jsarwt');
+			a = as[i];
+	}
+};
+
+const disableOnmousedownOfInsertedNode = function (evt) {
+	const node = evt.target;
+	//const requestURL = evt.newValue;
+	//const parentNode = evt.relatedNode;
+	disableOnmousedown(node);
+};
+
+document.addEventListener('load', disableOnmousedown(document.body), false);
+document.body.addEventListener('AutoPagerize_DOMNodeInserted', disableOnmousedownOfInsertedNode, false);
