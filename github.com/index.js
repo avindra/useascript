@@ -1,17 +1,12 @@
-import { onBrowse } from './../util.js';
+import { onBrowse, sleep } from "./../util.js";
 
-onBrowse(() => {
-	// redir deprecated account. TODO: delet this
-	if (location.pathname === "/mediawiki") {
-		location.pathname = "/wikimedia";
-	}
-
+onBrowse(async () => {
 	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/([^]+)\/(.+)/;
 
 	const fileMatch = location.pathname.match(fileRegex);
 
 	if (fileMatch) {
-		const btns = document.querySelector(".repository-content .BtnGroup");
+		const btns = document.querySelector(`div[class^=ButtonGroup]`);
 		if (btns) {
 			const [, user, repo, branch, file] = fileMatch;
 
@@ -23,26 +18,32 @@ onBrowse(() => {
 
 			btns.appendChild(a);
 		}
-	} else if(/\/compare\//.test(location.pathname)) {
-		const commits = document.querySelectorAll("#commits_bucket .Details:not(.branch-action-item)");
-		if (commits.length === 0) {
-			return;
-		}
-
+	} else if (/\/compare\//.test(location.pathname)) {
+		let attempts = 0;
+		let commits;
+		do {
+			commits = document.querySelectorAll(
+				"#commits_bucket .Details:not(.branch-action-item)",
+			);
+			if (commits.length > 0) {
+				break;
+			} else {
+				await sleep(500);
+			}
+		} while (++attempts < 10);
 
 		const ctr = document.querySelector(".range-editor");
-		if (ctr){
+		if (ctr) {
 			const gen = document.createElement("button");
 			gen.textContent = `Show ${commits.length} commits`;
 			gen.onclick = () => {
-				const all = Array.from(commits).map( node => {
-					const inner = node.querySelector('p');
-					return inner.textContent.trim().replace(/[\s\n…]+$/g, '');
+				const all = Array.from(commits).map((node) => {
+					const inner = node.querySelector("p");
+					return inner.textContent.trim().replace(/[\s\n…]+$/g, "");
 				});
 				console.log(all, all.join("\n"));
 			};
 			ctr.appendChild(gen);
 		}
 	}
-
 });
