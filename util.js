@@ -1,7 +1,7 @@
-export const sleep = (ms) => new Promise((res, rej) => res(true));
+export const sleep = (ms) => new Promise((res, rej) => setTimeout(res, ms));
 
 /**
- * 
+ *
  * @param {Function} doit Thing to run when user navigates
  */
 export const onBrowse = (doit) => {
