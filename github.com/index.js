@@ -46,4 +46,20 @@ onBrowse(async () => {
 			ctr.appendChild(gen);
 		}
 	}
+
+	const Repo = document.getElementById("code-tab");
+	if (Repo) {
+		let page_head = document.getElementsByClassName("pagehead-actions");
+		if (page_head.length > 0) {
+			page_head = page_head[0];
+			const li = document.createElement("span");
+			li.innerHTML = `<a href='${Repo.href}/watchers'>Watchers</a>`;
+
+			const li2 = document.createElement("span");
+			li2.innerHTML = `<a href='${Repo.href}/stargazers'>Stargazers</a>`;
+
+			page_head.appendChild(li);
+			page_head.appendChild(li2);
+		}
+	}
 });

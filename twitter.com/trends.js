@@ -1,29 +1,27 @@
 import { onBrowse } from "../util.js";
 
-
-const getNews = () => (
+const getNews = () =>
 	document.evaluate(
 		`//span[text()="What’s happening"]/../../../../..`,
 		document,
 		null,
 		9,
 		null,
-	)?.singleNodeValue
-);	
+	)?.singleNodeValue;
 
-const doIt =  async () => {
+const doIt = async () => {
 	let maxAttempts = 100;
 	let n = 0;
 	let hidden = true;
 
 	/**
-	 * 
-	 * @param {Function} callback 
+	 *
+	 * @param {Function} callback
 	 * @returns {MutationCallback}
 	 */
 	const createObserver = (callback) => {
 		/**
-		 * 
+		 *
 		 * @param {MutationRecord[]} list
 		 */
 		const mutationCb = (list) => {
@@ -50,24 +48,22 @@ const doIt =  async () => {
 			return;
 		}
 
-
 		const fakeNews = getNews();
 		if (fakeNews) {
 			clearInterval(pid);
 			// ready to work
 			const anchor = fakeNews;
-			anchor.onclick =
-				() => {
-					let fakeStory = anchor;
-					while (fakeStory = fakeStory.nextElementSibling) {
-						fakeStory.style.display = hidden ? "" : "none";
-					}
-					hidden = !hidden;
-				};
+			anchor.onclick = () => {
+				let fakeStory = anchor;
+				while ((fakeStory = fakeStory.nextElementSibling)) {
+					fakeStory.style.display = hidden ? "" : "none";
+				}
+				hidden = !hidden;
+			};
 
 			const hideFakeNews = () => {
 				let fakeStory = anchor;
-				while (fakeStory = fakeStory.nextElementSibling) {
+				while ((fakeStory = fakeStory.nextElementSibling)) {
 					fakeStory.style.display = "none";
 				}
 			};
