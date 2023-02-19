@@ -26,7 +26,6 @@ onBrowse(async () => {
 				"#commits_bucket .Details:not(.branch-action-item)",
 			);
 			if (commits.length > 0) {
-				console.log("READY", commits);
 				break;
 			} else {
 				await sleep(500);
