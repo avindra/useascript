@@ -6,7 +6,7 @@ onBrowse(async () => {
 	const fileMatch = location.pathname.match(fileRegex);
 
 	if (fileMatch) {
-		const btns = document.querySelector(`div[class^=ButtonGroup]`);
+		const btns = document.querySelector("div[class^=ButtonGroup]");
 		if (btns) {
 			const [, user, repo, branch, file] = fileMatch;
 
@@ -47,19 +47,26 @@ onBrowse(async () => {
 		}
 	}
 
-	const Repo = document.getElementById("code-tab");
-	if (Repo) {
-		let page_head = document.getElementsByClassName("pagehead-actions");
-		if (page_head.length > 0) {
-			page_head = page_head[0];
-			const li = document.createElement("span");
-			li.innerHTML = `<a href='${Repo.href}/watchers'>Watchers</a>`;
+	const pageHeadActions = document.querySelectorAll(".pagehead-actions > *");
+	if (pageHeadActions.length === 3 || pageHeadActions.length === 4) {
+		let Repo = document.querySelector('[itemprop="name"] a');
+		if (Repo) {
+			let page_head = document.getElementsByClassName("pagehead-actions");
+			if (page_head.length > 0) {
+				page_head = page_head[0];
+				const a = document.createElement("a");
+				a.className = "btn-sm btn";
+				a.href = `${Repo.href}/watchers`;
+				a.textContent = "Watchers";
 
-			const li2 = document.createElement("span");
-			li2.innerHTML = `<a href='${Repo.href}/stargazers'>Stargazers</a>`;
+				const a2 = document.createElement("a");
+				a2.className = "btn-sm btn";
+				a2.href = `${Repo.href}/stargazers`;
+				a2.textContent = "Stargazers";
 
-			page_head.appendChild(li);
-			page_head.appendChild(li2);
+				page_head.appendChild(a);
+				page_head.appendChild(a2);
+			}
 		}
 	}
 });
