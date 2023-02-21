@@ -3,7 +3,9 @@
 
 `useascript` is a repository of userscripts for a clearer Internet 🌃
 
-Brought to you by [Avindra Goolcharan](https://dra.vin/).
+## Name meaning
+
+The name (`use`-`a`-`script`) denotes that the various scripts supporting many websites are loaded from a `single` script. This is done to conveniently manage many userscripts and simplify the development / testing model. At the same time, it eliminates the need for a 3rd party host.
 
 ## Usage
 
@@ -18,6 +20,8 @@ websites</strong>.
 ```
 
 ## License
+
+Brought to you by [Avindra Goolcharan](https://dra.vin/).
 
 The source code is fully licensed under `GPL-3.0-only`. See [COPYING](./COPYING)
 for more info.
