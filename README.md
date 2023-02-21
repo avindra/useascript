@@ -1,6 +1,5 @@
-[![ci](https://github.com/avindra/useascript/actions/workflows/rome.yml/badge.svg)](https://github.com/avindra/useascript/actions/workflows/rome.yml)
+# useascript [![ci](https://github.com/avindra/useascript/actions/workflows/rome.yml/badge.svg)](https://github.com/avindra/useascript/actions/workflows/rome.yml)
 
-# useascript
 
 `useascript` is a repository of userscripts for a clearer Internet 🌃
 
