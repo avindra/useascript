@@ -13,8 +13,8 @@ onBrowse(async () => {
 			const jsd = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
 			const a = document.createElement("a");
 			a.href = jsd;
-			a.textContent = `JsDelivr`;
-			a.className = `btn-sm btn BtnGroup-item`;
+			a.textContent = "JsDelivr";
+			a.className = "btn-sm btn BtnGroup-item";
 
 			btns.appendChild(a);
 		}
@@ -49,7 +49,7 @@ onBrowse(async () => {
 
 	const pageHeadActions = document.querySelectorAll(".pagehead-actions > *");
 	if (pageHeadActions.length === 3 || pageHeadActions.length === 4) {
-		let Repo = document.querySelector('[itemprop="name"] a');
+		const Repo = document.querySelector('[itemprop="name"] a');
 		if (Repo) {
 			let page_head = document.getElementsByClassName("pagehead-actions");
 			if (page_head.length > 0) {

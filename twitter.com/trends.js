@@ -10,7 +10,7 @@ const getNews = () =>
 	)?.singleNodeValue;
 
 const doIt = async () => {
-	let maxAttempts = 100;
+	const maxAttempts = 100;
 	let n = 0;
 	let hidden = true;
 

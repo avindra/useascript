@@ -30,6 +30,6 @@ switch (location.host) {
 }
 
 if (target) {
-	console.log(`loading script`, new Date(), target);
+	console.log("loading script", new Date(), target);
 	await import(`./${target}/index.js`);
 }
