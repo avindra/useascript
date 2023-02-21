@@ -1,0 +1,31 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: opensuse/tumbleweed
+
+    steps:
+      - uses: actions/checkout@v1.2.0
+      - name: Add devel repo
+        run: |
+          zypper ar https://download.opensuse.org/repositories/devel:/languages:/javascript/openSUSE_Tumbleweed/devel:languages:javascript.repo
+
+      - name: Update packages
+        run: |
+          zypper --non-interactive --gpg-auto-import-keys ref
+          
+    
+      - name: Install dependencies
+        run: zypper --non-interactive --gpg-auto-import-keys install rome
+      
+      - name: Lint
+        run: |
+          rome check .
+
+      - name: Format
+        run: |
+          rome ci .

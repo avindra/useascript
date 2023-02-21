@@ -12,14 +12,12 @@ b.style.backgroundImage = "none";
 /**
  * remove promotional content for social media
  */
-[".fbLikeBoxHolder", ".subscribe"].forEach(
-	(css) => {
-		const like = document.querySelector(css);
-		if (like) {
-			like.parentNode.remove();
-		}
-	},
-);
+[".fbLikeBoxHolder", ".subscribe"].forEach((css) => {
+	const like = document.querySelector(css);
+	if (like) {
+		like.parentNode.remove();
+	}
+});
 
 /**
  * remove superflous footer text
@@ -35,17 +33,16 @@ if (copy) {
  */
 const verse = document.querySelector("#verseAudio audio");
 if (verse) {
-	verse.onended =
-		() => {
-			const A = document.querySelector(".verseNav .nextArrow a");
-			// chapter end
-			if (A.href === "javascript:;") {
-				const B = document.querySelector(".chapterNav .nextArrow a");
-				B.click();
-			} else {
-				A.click();
-			}
-		};
+	verse.onended = () => {
+		const A = document.querySelector(".verseNav .nextArrow a");
+		// chapter end
+		if (A.href === "javascript:;") {
+			const B = document.querySelector(".chapterNav .nextArrow a");
+			B.click();
+		} else {
+			A.click();
+		}
+	};
 	try {
 		verse.play();
 	} catch (_) {}
