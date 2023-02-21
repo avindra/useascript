@@ -22,6 +22,10 @@ jobs:
       - name: Install dependencies
         run: zypper --non-interactive --gpg-auto-import-keys install rome
       
-      - name: Test
+      - name: Lint
         run: |
           rome check .
+
+      - name: Format
+        run: |
+          rome ci .
