@@ -1,15 +1,18 @@
+[![ci](https://github.com/avindra/useascript/actions/workflows/rome.yml/badge.svg)](https://github.com/avindra/useascript/actions/workflows/rome.yml)
+
 # useascript
 
 `useascript` is a repository of userscripts for a clearer Internet 🌃
 
-
 Brought to you by [Avindra Goolcharan](https://dra.vin/).
 
 ## Usage
- 
- * [Install from GitHub](https://github.com/avindra/useascript/raw/main/hook.user.js) ([Source](./hook.user.js))
 
-Note that, as per the `@match` directive, it will run on <strong>all websites</strong>.
+- [Install from GitHub](https://github.com/avindra/useascript/raw/main/hook.user.js)
+  ([Source](./hook.user.js))
+
+Note that, as per the `@match` directive, it will run on <strong>all
+websites</strong>.
 
 ```
 // @match        *://*/*
@@ -17,4 +20,5 @@ Note that, as per the `@match` directive, it will run on <strong>all websites</s
 
 ## License
 
-The source code is fully licensed under `GPL-3.0-only`. See [COPYING](./COPYING) for more info.
+The source code is fully licensed under `GPL-3.0-only`. See [COPYING](./COPYING)
+for more info.
