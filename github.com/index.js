@@ -19,12 +19,14 @@ onBrowse(async () => {
 			btns.appendChild(a);
 		}
 	} else if (/\/compare\//.test(location.pathname)) {
+		const getCommits = () =>
+			document.querySelectorAll(
+				"#commits_bucket .Details:not(.branch-action-item)",
+			);
 		let attempts = 0;
 		let commits;
 		do {
-			commits = document.querySelectorAll(
-				"#commits_bucket .Details:not(.branch-action-item)",
-			);
+			commits = getCommits();
 			if (commits.length > 0) {
 				break;
 			} else {
@@ -37,6 +39,7 @@ onBrowse(async () => {
 			const gen = document.createElement("button");
 			gen.textContent = `Show ${commits.length} commits`;
 			gen.onclick = () => {
+				commits = getCommits();
 				const all = Array.from(commits).map((node) => {
 					const inner = node.querySelector("p");
 					return inner.textContent.trim().replace(/[\s\n…]+$/g, "");
