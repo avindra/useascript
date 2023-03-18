@@ -20,14 +20,6 @@ b.style.backgroundImage = "none";
 });
 
 /**
- * remove superflous footer text
- */
-const copy = document.querySelector(".screen.footer #copyright:nth-of-type(3)");
-if (copy) {
-	copy.remove();
-}
-
-/**
  * automatically move to next verse
  * after audio ends
  */
