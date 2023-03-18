@@ -20,14 +20,6 @@ b.style.backgroundImage = "none";
 });
 
 /**
- * remove superflous footer text
- */
-const copy = document.querySelector(".screen.footer #copyright:nth-of-type(3)");
-if (copy) {
-	copy.remove();
-}
-
-/**
  * automatically move to next verse
  * after audio ends
  */
@@ -55,3 +47,11 @@ if (
 ) {
 	document.querySelector("aside").remove();
 }
+
+function removeAd(selector) {
+	const ad = document.querySelector(selector);
+	if (ad) ad.remove();
+}
+
+removeAd("img[src='/public/images/upi_bg.png']");
+removeAd(".copyrightwarning");
