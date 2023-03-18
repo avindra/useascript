@@ -55,3 +55,11 @@ if (
 ) {
 	document.querySelector("aside").remove();
 }
+
+function removeAd(selector) {
+	const ad = document.querySelector(selector);
+	if (ad) ad.remove();
+}
+
+removeAd("img[src='/public/images/upi_bg.png']");
+removeAd(".copyrightwarning");
