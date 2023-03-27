@@ -14,5 +14,5 @@ if (
 	const p = document.createElement("p");
 	p.appendChild(chanId);
 
-	document.getElementById("channel-name").appendChild(p);
+	document.querySelector("div.ytd-channel-name").appendChild(p);
 }
