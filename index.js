@@ -23,6 +23,7 @@ switch (location.host) {
 			case "guidestar.org":
 			case "npmjs.com":
 			case "reddit.com":
+			case "build.opensuse.org":
 			case "youtube.com":
 				target = domain;
 		}
