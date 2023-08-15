@@ -26,6 +26,11 @@ switch (location.host) {
 			case "build.opensuse.org":
 			case "youtube.com":
 				target = domain;
+			default: {
+				if (/(ggpht|googleusercontent).com$/.test(domain)) {
+					target = "ggpht.com";
+				}
+			}
 		}
 	}
 }
