@@ -46,7 +46,7 @@ function run_it(node = document) {
 	const sections = location.pathname.split(/(?!^)\//);
 	const loc = sections[0];
 	if (["/user", "/r"].includes(loc)) {
-		[...node.querySelectorAll("a")].forEach((element) => {
+		for (const element of node.querySelectorAll("a")) {
 			const href = element.getAttribute("href");
 			if (!href) {
 				return;
@@ -113,7 +113,7 @@ function run_it(node = document) {
 					'url("https://upload.wikimedia.org/wikipedia/commons/0/0f/External-link-ltr-icon_Dark.png")';
 				element.style.paddingRight = "11px";
 			}
-		});
+		}
 	}
 	node.marked = true;
 }

@@ -33,7 +33,7 @@ onBrowse(() => {
  *
  * @see https://gist.github.com/chris-kwl/6172eb00971ab81bf99a213682b42e21
  */
-const disableOnmousedown = function (node) {
+const disableOnmousedown = (node) => {
 	const as = node.getElementsByTagName("a");
 	for (let a = as[0], i = 1; a; i++) {
 		a.removeAttribute("data-jsarwt");
@@ -41,7 +41,7 @@ const disableOnmousedown = function (node) {
 	}
 };
 
-const disableOnmousedownOfInsertedNode = function (evt) {
+const disableOnmousedownOfInsertedNode = (evt) => {
 	const node = evt.target;
 	//const requestURL = evt.newValue;
 	//const parentNode = evt.relatedNode;

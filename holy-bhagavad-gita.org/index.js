@@ -12,12 +12,12 @@ b.style.backgroundImage = "none";
 /**
  * remove promotional content for social media
  */
-[".fbLikeBoxHolder", ".subscribe"].forEach((css) => {
+for (const css of [".fbLikeBoxHolder", ".subscribe"]) {
 	const like = document.querySelector(css);
 	if (like) {
 		like.parentNode.remove();
 	}
-});
+}
 
 /**
  * automatically move to next verse

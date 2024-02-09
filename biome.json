@@ -3,8 +3,10 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"nursery": {
-				"useConst": "error",
+			"style": {
+				"useConst": "error"
+			},
+			"suspicious": {
 				"noAssignInExpressions": "off"
 			}
 		}
