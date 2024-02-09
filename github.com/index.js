@@ -49,27 +49,4 @@ onBrowse(async () => {
 			ctr.appendChild(gen);
 		}
 	}
-
-	const pageHeadActions = document.querySelectorAll(".pagehead-actions > *");
-	if (pageHeadActions.length === 3 || pageHeadActions.length === 4) {
-		const Repo = document.querySelector('[itemprop="name"] a');
-		if (Repo) {
-			let page_head = document.getElementsByClassName("pagehead-actions");
-			if (page_head.length > 0) {
-				page_head = page_head[0];
-				const a = document.createElement("a");
-				a.className = "btn-sm btn";
-				a.href = `${Repo.href}/watchers`;
-				a.textContent = "Watchers";
-
-				const a2 = document.createElement("a");
-				a2.className = "btn-sm btn";
-				a2.href = `${Repo.href}/stargazers`;
-				a2.textContent = "Stargazers";
-
-				page_head.appendChild(a);
-				page_head.appendChild(a2);
-			}
-		}
-	}
 });
