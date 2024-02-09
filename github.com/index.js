@@ -49,5 +49,4 @@ onBrowse(async () => {
 			ctr.appendChild(gen);
 		}
 	}
-
 });
