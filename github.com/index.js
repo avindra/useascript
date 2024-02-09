@@ -1,7 +1,7 @@
 import { onBrowse, sleep } from "./../util.js";
 
 onBrowse(async () => {
-	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/([^]+)\/(.+)/;
+	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/(.+)\/(.+)/;
 
 	const fileMatch = location.pathname.match(fileRegex);
 
@@ -29,9 +29,9 @@ onBrowse(async () => {
 			commits = getCommits();
 			if (commits.length > 0) {
 				break;
-			} else {
-				await sleep(500);
 			}
+
+			await sleep(500);
 		} while (++attempts < 10);
 
 		const ctr = document.querySelector(".range-editor");
