@@ -1,12 +1,29 @@
-const pkg = document.querySelector("#top h2 span");
-if (pkg) {
-	const bp = document.createElement("a");
-	bp.href = `https://bundlephobia.com/package/${pkg.textContent}`;
-	bp.textContent = "Bundlephobia";
-	pkg.parentNode.append(bp);
+const repos = document.getElementById("repository");
 
-	const pp = document.createElement("a");
-	pp.href = `https://packagephobia.com/result?p=${pkg.textContent}`;
-	pp.textContent = "Packagephobia";
-	pkg.parentNode.append(pp);
+const list = document.createElement("u");
+
+const listItem = (text, href) => {
+	const li = document.createElement("li");
+	const link = document.createElement("a");
+
+	link.href = href;
+	link.textContent = text;
+	li.append(link);
+	return li;
+};
+
+if (repos) {
+	const pkg = document.querySelector("#top h1 span").textContent;
+	list.append(
+		listItem("Bundlephobia", `https://bundlephobia.com/package/${pkg}`),
+	);
+
+	list.append(
+		listItem("npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`),
+	);
+
+	list.append(
+		listItem("Packagephobia", `https://packagephobia.com/result?p=${pkg}`),
+	);
+	repos.parentNode.append(list);
 }
