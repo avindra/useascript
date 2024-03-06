@@ -1,6 +1,6 @@
 const repos = document.getElementById("repository");
 
-const list = document.createElement("u");
+const list = document.createElement("ul");
 
 const listItem = (text, href) => {
 	const li = document.createElement("li");
