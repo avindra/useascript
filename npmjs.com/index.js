@@ -25,5 +25,10 @@ if (repos) {
 	list.append(
 		listItem("Packagephobia", `https://packagephobia.com/result?p=${pkg}`),
 	);
+
+	list.append(
+		listItem("pkg-size.dev", `https://pkg-size.dev/${pkg}`)
+	);
+
 	repos.parentNode.append(list);
 }
