@@ -21,10 +21,9 @@ if (repos) {
 		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
 	];
 
-	sites.forEach((data) => {
-		const [label, site] = data;
+	for (const [label, site] of sites) {
 		list.append(listItem(label, site));
-	});
+	}
 
 	repos.parentNode.append(list);
 }
