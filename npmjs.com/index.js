@@ -14,21 +14,17 @@ const listItem = (text, href) => {
 
 if (repos) {
 	const pkg = document.querySelector("#top h1 span").textContent;
-	list.append(
-		listItem("Bundlephobia", `https://bundlephobia.com/package/${pkg}`),
-	);
+	const sites = [
+		["Bundlephobia", `https://bundlephobia.com/package/${pkg}`],
+		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
+		["Packagephobia", `https://packagephobia.com/result?p=${pkg}`],
+		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
+	];
 
-	list.append(
-		listItem("npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`),
-	);
-
-	list.append(
-		listItem("Packagephobia", `https://packagephobia.com/result?p=${pkg}`),
-	);
-
-	list.append(
-		listItem("pkg-size.dev", `https://pkg-size.dev/${pkg}`)
-	);
+	sites.forEach((data) => {
+		const [label, site] = data;
+		list.append(listItem(label, site));
+	});
 
 	repos.parentNode.append(list);
 }
