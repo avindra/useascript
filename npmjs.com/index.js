@@ -17,6 +17,7 @@ if (repos) {
 	const sites = [
 		["Bundlephobia", `https://bundlephobia.com/package/${pkg}`],
 		["anvaka", `https://npm.anvaka.com/#/view/2d/${pkg}`],
+		["npmgraph", `https://npmgraph.js.org/?q=${pkg}`],
 		["Packagephobia", `https://packagephobia.com/result?p=${pkg}`],
 		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
 		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
