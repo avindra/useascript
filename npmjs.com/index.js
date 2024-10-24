@@ -16,7 +16,6 @@ if (repos) {
 	const pkg = document.querySelector("main h2 span").textContent;
 
 	const sites = [
-
 		["Bundlephobia", `https://bundlephobia.com/package/${pkg}`],
 		["anvaka", `https://npm.anvaka.com/#/view/2d/${pkg}`],
 		["npmgraph", `https://npmgraph.js.org/?q=${pkg}`],
