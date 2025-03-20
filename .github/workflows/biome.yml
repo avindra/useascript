@@ -9,7 +9,7 @@ jobs:
       image: opensuse/tumbleweed
 
     steps:
-      - uses: actions/checkout@v1.2.0
+      - uses: actions/checkout@v4
       - name: Add devel repo
         run: |
           zypper ar https://download.opensuse.org/repositories/devel:/languages:/javascript/openSUSE_Tumbleweed/devel:languages:javascript.repo
