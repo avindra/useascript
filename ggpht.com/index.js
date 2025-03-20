@@ -7,7 +7,7 @@ if (!location.href.includes("4096")) {
 		location.replace(dest);
 	}
 
-	const dest2 = location.href.replace(/w\d+-h\d+/, "w4096");
+	const dest2 = location.href.replace(/w\d+-h\d+/, "w4096-h4096");
 	if (dest2 !== location.href) {
 		location.replace(dest2);
 	}

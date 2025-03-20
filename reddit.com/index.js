@@ -14,8 +14,10 @@ document.head.appendChild(sheet);
 
 // hide multi-reddits by default
 setTimeout(() => {
-	const customFeeds = document.querySelector('[aria-controls="multireddits_section"]');
-	if (customFeeds.ariaExpanded === 'true') {
+	const customFeeds = document.querySelector(
+		'[aria-controls="multireddits_section"]',
+	);
+	if (customFeeds.ariaExpanded === "true") {
 		customFeeds.click();
 	}
 }, 500);
@@ -42,7 +44,6 @@ const observer = new MutationObserver((mutations, _) => {
 
 observer.observe(targetNode, config);
 
-
 /**
  *
  */
@@ -51,7 +52,6 @@ function run_it(node = document) {
 		console.log("avoided extraneous call");
 		return;
 	}
-
 
 	const sections = location.pathname.split(/(?!^)\//);
 	const loc = sections[0];
