@@ -1,1 +1,1 @@
-localStorage.setItem('pagecount', 0)
+localStorage.setItem("pagecount", 0)
