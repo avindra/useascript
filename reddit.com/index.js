@@ -12,6 +12,19 @@ sheet.type = "text/css";
 sheet.innerText = styles;
 document.head.appendChild(sheet);
 
+const sections = location.pathname.split(/(?!^)\//);
+const loc = sections[0];
+
+if (["/media"].includes(loc)) {
+	const i = new URLSearchParams(location.search).get("url");
+	fetch(i)
+		.then((response) => response.blob())
+		.then((blob) => {
+			const objectURL = URL.createObjectURL(blob);
+			location.href = objectURL;
+		});
+}
+
 // hide multi-reddits by default
 setTimeout(() => {
 	const customFeeds = document.querySelector(
@@ -43,7 +56,6 @@ const observer = new MutationObserver((mutations, _) => {
 });
 
 observer.observe(targetNode, config);
-
 /**
  *
  */
@@ -53,8 +65,6 @@ function run_it(node = document) {
 		return;
 	}
 
-	const sections = location.pathname.split(/(?!^)\//);
-	const loc = sections[0];
 	if (["/user", "/r"].includes(loc)) {
 		for (const element of node.querySelectorAll("a")) {
 			const href = element.getAttribute("href");
