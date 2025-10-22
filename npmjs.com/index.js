@@ -13,7 +13,7 @@ const listItem = (text, href) => {
 };
 
 if (repos) {
-	const pkg = document.title.substring(0,  document.title.length - 6);
+	const pkg = document.title.substring(0, document.title.length - 6);
 
 	const sites = [
 		["Bundlephobia", `https://bundlephobia.com/package/${pkg}`],
