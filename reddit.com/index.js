@@ -16,13 +16,28 @@ const sections = location.pathname.split(/(?!^)\//);
 const loc = sections[0];
 
 if (["/media"].includes(loc)) {
-	const i = new URLSearchParams(location.search).get("url");
-	fetch(i)
-		.then((response) => response.blob())
-		.then((blob) => {
-			const objectURL = URL.createObjectURL(blob);
-			location.href = objectURL;
-		});
+	//const i = new URLSearchParams(location.search).get("url");
+
+	let img = document.getElementsByTagName("img")[0];
+	const c = document.createElement("canvas");
+	const ctx = c.getContext("2d");
+
+	img.crossOrigin = "anonymous";
+	img = img.cloneNode(true);
+
+	img.onload = () => {
+		c.width = img.naturalWidth;
+		c.height = img.naturalHeight;
+		ctx.drawImage(img, 0, 0);
+		c.toBlob(
+			(blob) => {
+				const objectURL = URL.createObjectURL(blob);
+				location.href = objectURL;
+			},
+			"image/jpeg",
+			1,
+		);
+	};
 }
 
 // hide multi-reddits by default
