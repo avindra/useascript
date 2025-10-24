@@ -126,7 +126,7 @@ function run_it(node = document) {
 				element.style.backgroundImage =
 					"url(http://slippyd.com/assets/70/logo.facebook.favicon.s16.png)";
 			} else if (/http:\/\/(?:www\.)?en\.wikipedia\.org\//.test(href)) {
-				if (/\/wiki\/([^\/]+)/.test(element.pathname)) {
+				if (/\/wiki\/([^/]+)/.test(element.pathname)) {
 					if (element.textContent === href) {
 						element.innerHTML = "";
 					}

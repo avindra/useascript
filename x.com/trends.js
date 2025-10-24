@@ -19,7 +19,7 @@ const doIt = async () => {
 	 * @param {Function} callback
 	 * @returns {MutationCallback}
 	 */
-	const createObserver = (callback) => {
+	const createObserver = (_callback) => {
 		/**
 		 *
 		 * @param {MutationRecord[]} list

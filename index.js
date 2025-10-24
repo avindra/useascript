@@ -23,8 +23,8 @@ switch (location.host) {
 			case "guidestar.org":
 			case "npmjs.com":
 			case "reddit.com":
+			// biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional
 			case "youtube.com":
-				// biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional
 				target = domain;
 			default: {
 				if (/(ggpht|googleusercontent).com$/.test(domain)) {
