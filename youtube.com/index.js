@@ -2,8 +2,8 @@
  * Show channel ID on pages that use "pretty" URLS
  */
 if (
-	/^\/(?:c|user)\//.test(location.pathname) ||
-	document.getElementById("channel-header")
+	/^\/(?:c|user|@)\/?/.test(location.pathname) ||
+	document.getElementById("page-header")
 ) {
 	const chanId = document.createElement("a");
 	const meta = ytInitialData.metadata.channelMetadataRenderer;
@@ -14,5 +14,9 @@ if (
 	const p = document.createElement("p");
 	p.appendChild(chanId);
 
-	document.querySelector("div.ytd-channel-name").appendChild(p);
+	setTimeout(() => {
+		document
+			.querySelector(".yt-page-header-view-model__page-header-title")
+			.nextElementSibling.prepend(p);
+	}, 1500); // wait for the header to load
 }
