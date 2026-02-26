@@ -19,7 +19,7 @@ jobs:
           zypper --non-interactive --gpg-auto-import-keys ref devel_languages_javascript
 
       - name: Install dependencies
-        run: zypper --non-interactive --gpg-auto-import-keys install biome esbuild
+        run: zypper --non-interactive --gpg-auto-import-keys --no-refresh install biome esbuild
 
       - name: Lint
         run: |
