@@ -1,3 +1,5 @@
+import { sleep } from "../util";
+
 /**
  * revival of
  * @see https://web.archive.org/web/20131105145427/http://userscripts.org/scripts/review/86301
@@ -41,45 +43,30 @@ if (["/media"].includes(loc)) {
 }
 
 // hide multi-reddits by default
+(async () => {
+	while (true) {
+		const customFeeds = document.querySelector(
+			'[aria-controls="multireddits_section"]',
+		);
+		if (customFeeds) {
+			if (customFeeds.ariaExpanded === "true") {
+				customFeeds.click();
+			}
+			break;
+		}
+		await sleep(500);
+	}
+})();
+
 setTimeout(() => {
-	const customFeeds = document.querySelector(
-		'[aria-controls="multireddits_section"]',
-	);
-	if (customFeeds.ariaExpanded === "true") {
-		customFeeds.click();
-	}
-}, 500);
+	console.log("FNS", document.querySelector("shreddit-comment-tree"));
+	run_it(document.querySelector("main"));
+}, 1000);
 
-// Select the node that will be observed for mutations
-const targetNode = document.querySelector(".ListingLayout-outerContainer");
-
-// Options for the observer (which mutations to observe)
-const config = { attributes: true, childList: true, subtree: true };
-
-let runs = 0;
-const observer = new MutationObserver((mutations, _) => {
-	for (const mut of mutations) {
-		if (mut.target.tagName !== "DIV") {
-			continue;
-		}
-
-		if (mut.type === "childList") {
-			run_it(mut.target);
-			console.log("ran it", ++runs, "times", mut);
-		}
-	}
-});
-
-observer.observe(targetNode, config);
 /**
  *
  */
-function run_it(node = document) {
-	if (node.marked) {
-		console.log("avoided extraneous call");
-		return;
-	}
-
+function run_it(node) {
 	if (["/user", "/r"].includes(loc)) {
 		for (const element of node.querySelectorAll("a")) {
 			const href = element.getAttribute("href");
@@ -106,14 +93,14 @@ function run_it(node = document) {
 				element.className += " favicon";
 				element.style.color = "crimson";
 				element.style.backgroundImage =
-					'url("http://www.reddit.com/static/favicon.ico")';
-			} else if (/http:\/\/(?:www\.)?youtube\.com/.test(href)) {
+					'url("https://www.reddit.com/static/favicon.ico")';
+			} else if (/https?:\/\/(?:(www|music)\.)?youtube\.com/.test(href)) {
 				element.className += " favicon";
 				element.style.color = "red";
 				element.style.backgroundImage =
-					'url("http://s.ytimg.com/yt/favicon.ico")';
+					'url("https://s.ytimg.com/yt/favicon.ico")';
 				if (href === element.textContent) {
-					element.textContent = "{Video}";
+					element.textContent = "{watch on YouTube}";
 				}
 			} else if (/http:\/\/(?:www\.)?facebook\.com/.test(href)) {
 				if (href.match(/[&?]id=(\d+)/)) {
@@ -124,7 +111,7 @@ function run_it(node = document) {
 				element.className += " favicon";
 				element.style.color = "darkBlue";
 				element.style.backgroundImage =
-					"url(http://slippyd.com/assets/70/logo.facebook.favicon.s16.png)";
+					'url("https://facebook.com/favicon.ico")';
 			} else if (/http:\/\/(?:www\.)?en\.wikipedia\.org\//.test(href)) {
 				if (/\/wiki\/([^/]+)/.test(element.pathname)) {
 					if (element.textContent === href) {
@@ -137,7 +124,7 @@ function run_it(node = document) {
 				}
 				element.style.color = "black";
 				element.style.backgroundImage =
-					'url("http://en.wikipedia.org/favicon.ico")';
+					'url("https://en.wikipedia.org/favicon.ico")';
 				element.className += " favicon";
 			} else if (
 				!element.href.startsWith(`${location.protocol}//${location.host}`)
