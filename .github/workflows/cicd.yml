@@ -28,3 +28,14 @@ jobs:
       - name: Format
         run: |
           biome ci .
+
+      - name: Build
+        run: |
+          esbuild --bundle --minify --outfile=dist/index.js index.js
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
