@@ -13,7 +13,7 @@ The userscript is hosted here:
 
 https://dra.vin/useascript/useascript.user.js
 
-It has the `.meta.js` 
+It has a corresponding `.meta.js` so updates will work automatically.
 
 ## Development
 
