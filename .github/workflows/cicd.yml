@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: |
-          esbuild --bundle --minify --outfile=dist/index.js index.js
+          esbuild --bundle --minify --outfile=useascript.user.js index.js
 
       - name: Deploy
         #if: github.ref == 'refs/heads/main'
