@@ -3,11 +3,21 @@
  */
 
 /**
- * replace battlefield image with solid color
+ * - replace battlefield image with solid blue color
+ * - remove copyright banner
+ * - fix janky search box becoming too high
  */
-const b = document.body;
-b.style.background = "#131b42";
-b.style.backgroundImage = "none";
+const styles = `
+	.copyright-warning, .gsib_b {display:none}
+	body {
+		background-color: #131b42;
+		background-image: none;
+	}
+`;
+const sheet = document.createElement("style");
+sheet.type = "text/css";
+sheet.innerText = styles;
+document.head.appendChild(sheet);
 
 /**
  * remove promotional content for social media
@@ -54,4 +64,3 @@ function removeAd(selector) {
 }
 
 removeAd("img[src='/public/images/upi_bg.png']");
-removeAd(".copyrightwarning");
