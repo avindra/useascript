@@ -7,9 +7,17 @@
 
 The name (`use`-`a`-`script`) denotes that the various scripts supporting many websites are loaded from a `single` script. This is done to conveniently manage many userscripts and simplify the development / testing model. At the same time, it eliminates the need for a 3rd party host.
 
-## Usage
+## Install
 
-Run `make` to build the bundle. This requires `esbuild`. It will go directly to your clipboard (assuming Wayland) using `wl-copy`. Then, paste the result into your userscript manager's editor. A less cumbersome method is desired, please suggest a better way if you know one!
+The userscript is hosted here:
+
+https://dra.vin/useascript/useascript.user.js
+
+It has the `.meta.js` 
+
+## Development
+
+Run `make` to build the bundle. It requires `esbuild`. The script will go directly to your clipboard (assuming Wayland) using `wl-copy`. Then, paste the result into your userscript manager's editor. A less cumbersome method is desired, please suggest a better way if you know one!
 
 ## License
 
