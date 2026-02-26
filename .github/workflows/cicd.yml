@@ -1,0 +1,43 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: opensuse/tumbleweed
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Add devel repo
+        run: |
+          zypper ar https://download.opensuse.org/repositories/devel:/languages:/javascript/openSUSE_Tumbleweed/devel:languages:javascript.repo
+
+      - name: Update packages
+        run: |
+          zypper --non-interactive --gpg-auto-import-keys ref devel_languages_javascript
+
+      - name: Install dependencies
+        # git needed for gh-pages action
+        run: zypper --non-interactive --gpg-auto-import-keys --no-refresh install biome esbuild git
+
+      - name: Lint
+        run: |
+          biome check .
+
+      - name: Format
+        run: |
+          biome ci .
+
+      - name: Build
+        run: |
+          esbuild index.js --bundle --minify --outfile=BUNDLE.js
+          cat useascript.meta.js BUNDLE.js > useascript.user.js
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .

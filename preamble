@@ -1,8 +1,0 @@
-// ==UserScript==
-// @name         useascript-hook
-// @namespace    https://dra.vin/
-// @version      0.1
-// @description  Useascript, a compendium of userscripts for the Web
-// @author       Avindra Goolcharan
-// @match        *://*/*
-// ==/UserScript==
