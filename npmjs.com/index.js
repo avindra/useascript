@@ -12,7 +12,7 @@ const listItem = (text, href) => {
 	return li;
 };
 
-if (repos) {
+function main() {
 	const pkg = document.title.substring(0, document.title.length - 6);
 
 	const sites = [
@@ -22,6 +22,7 @@ if (repos) {
 		["Packagephobia", `https://packagephobia.com/result?p=${pkg}`],
 		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
 		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
+		["deps.dev", `https://deps.dev/npm/${pkg}`],
 	];
 
 	for (const [label, site] of sites) {
@@ -29,4 +30,8 @@ if (repos) {
 	}
 
 	repos.parentNode.append(list);
+}
+
+if (repos) {
+	setTimeout(main, 500);
 }

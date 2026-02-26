@@ -1,12 +1,14 @@
 import { onBrowse, sleep } from "./../util.js";
 
-onBrowse(async () => {
+let pending = false;
+async function main() {
 	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/(.+)\/(.+)/;
-
 	const fileMatch = location.pathname.match(fileRegex);
 
 	if (fileMatch) {
-		const btns = document.querySelector("div[class^=ButtonGroup]");
+		const btns = document.querySelector(
+			"#repos-sticky-header div[class^=prc-ButtonGroup]",
+		);
 		if (btns) {
 			const [, user, repo, branch, file] = fileMatch;
 
@@ -49,4 +51,14 @@ onBrowse(async () => {
 			ctr.appendChild(gen);
 		}
 	}
+	pending = false;
+}
+
+onBrowse(async () => {
+	if (pending) return;
+
+	pending = true;
+	await sleep(1000);
+
+	setTimeout(main, 1000);
 });

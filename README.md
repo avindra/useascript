@@ -9,15 +9,7 @@ The name (`use`-`a`-`script`) denotes that the various scripts supporting many w
 
 ## Usage
 
-- [Install from GitHub](https://github.com/avindra/useascript/raw/main/hook.user.js)
-  ([Source](./hook.user.js))
-
-Note that, as per the `@match` directive, it will run on <strong>all
-websites</strong>.
-
-```
-// @match        *://*/*
-```
+Run `make` to build the bundle. This requires `esbuild`. It will go directly to your clipboard (assuming Wayland) using `wl-copy`. Then, paste the result into your userscript manager's editor. A less cumbersome method is desired, please suggest a better way if you know one!
 
 ## License
 

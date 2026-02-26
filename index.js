@@ -20,7 +20,6 @@ switch (location.host) {
 			case "holy-bhagavad-gita.org":
 			case "google.com":
 			case "ggpht.com":
-			case "guidestar.org":
 			case "npmjs.com":
 			case "reddit.com":
 			// biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional
@@ -37,5 +36,5 @@ switch (location.host) {
 
 if (target) {
 	console.log("loading script", new Date(), target);
-	await import(`./${target}/index.js`);
+	import(`./${target}/index.js`);
 }
