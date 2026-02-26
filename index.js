@@ -1,4 +1,3 @@
-alert("TESTING!!!");
 let target;
 
 switch (location.host) {
