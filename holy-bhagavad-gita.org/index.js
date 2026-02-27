@@ -8,7 +8,14 @@
  * - fix janky search box becoming too high
  */
 const styles = `
-	.copyright-warning, .gsib_b {display:none}
+	.copyright-warning,
+	.gita-side-content > div > div:nth-child(2),
+	.gita-side-content > div > div:nth-child(3),
+	.search-text,
+	.gsib_b {
+		display:none;
+	}
+
 	body {
 		background-color: #131b42;
 		background-image: none;
@@ -20,26 +27,26 @@ sheet.innerText = styles;
 document.head.appendChild(sheet);
 
 /**
- * remove promotional content for social media
- */
-for (const css of [".fbLikeBoxHolder", ".subscribe"]) {
-	const like = document.querySelector(css);
-	if (like) {
-		like.parentNode.remove();
-	}
-}
-
-/**
  * automatically move to next verse
  * after audio ends
  */
-const verse = document.querySelector("#verseAudio audio");
+const verse = document.querySelector(".bg-verse-audio audio");
+
 if (verse) {
 	verse.onended = () => {
-		const A = document.querySelector(".verseNav .nextArrow a");
+		const A = document.querySelector(".verse-navigator a.next-element");
+
+		const verses = Array.from(
+			document.querySelectorAll(".actual-verse-navigator a"),
+		);
+
+		const currentVerse = document.querySelector(
+			".actual-verse-navigator a.active",
+		);
+
 		// chapter end
-		if (A.href === "javascript:;") {
-			const B = document.querySelector(".chapterNav .nextArrow a");
+		if (verses[verses.length - 1] === currentVerse) {
+			const B = document.querySelector(".chapter-navigator a.next-element");
 			B.click();
 		} else {
 			A.click();
@@ -49,18 +56,3 @@ if (verse) {
 		verse.play();
 	} catch (_) {}
 }
-
-if (
-	["/index", "/dedication", "/introduction", "/publishers-note"].includes(
-		location.pathname.toLowerCase(),
-	)
-) {
-	document.querySelector("aside").remove();
-}
-
-function removeAd(selector) {
-	const ad = document.querySelector(selector);
-	if (ad) ad.remove();
-}
-
-removeAd("img[src='/public/images/upi_bg.png']");
