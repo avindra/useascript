@@ -8,6 +8,9 @@
 			},
 			"suspicious": {
 				"noAssignInExpressions": "off"
+			},
+			"correctness": {
+				"useImportExtensions": "error"
 			}
 		}
 	}
