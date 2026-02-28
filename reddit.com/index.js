@@ -1,4 +1,4 @@
-import { sleep } from "../util";
+import { sleep } from "../util.js";
 
 /**
  * revival of
@@ -59,7 +59,6 @@ if (["/media"].includes(loc)) {
 })();
 
 setTimeout(() => {
-	console.log("FNS", document.querySelector("shreddit-comment-tree"));
 	run_it(document.querySelector("main"));
 }, 1000);
 
