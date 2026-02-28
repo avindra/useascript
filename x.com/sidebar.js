@@ -1,4 +1,4 @@
-import { sleep } from "../util";
+import { sleep } from "../util.js";
 
 /**
  * @param {Function} callback A method to invoke when button is clicked.
