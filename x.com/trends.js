@@ -1,39 +1,48 @@
 import { onBrowse } from "../util.js";
 
-let expanded = false;
+let expanded = true;
 
 const single = (xpath) =>
 	document.evaluate(xpath, document, null, 9, null)?.singleNodeValue;
 
-const doIt = () => {
-	const target = expanded ? "600px" : "100%";
+const setNews = (_expanded) => {
+	const target = _expanded ? "100%" : "600px";
 
 	setTimeout(() => {
-		const column = single(`//*[@data-testid="primaryColumn"]`);
+		const contentArea = single(`//*[@data-testid="primaryColumn"]`);
 
-		if (column) {
-			column.style.maxWidth = target;
+		if (contentArea) {
+			contentArea.style.maxWidth = target;
 		}
 
 		setTimeout(() => {
-			const tl = single(`//*[@aria-labelledby="accessible-list-1"]/..`);
+			const tl = single(`//*[@aria-level="1"]/../..`);
 			if (tl) {
 				tl.style.maxWidth = target;
 			}
-		}, 500);
+		}, 1800);
 	}, 1000);
+
+	setTimeout(() => {
+		const sideRight = document.querySelector('[data-testid="sidebarColumn"]');
+
+		if (!sideRight) return;
+
+		if (expanded) {
+			sideRight.style.display = "none";
+		} else {
+			sideRight.style.display = "block";
+		}
+	}, 800);
 };
 
 export const setup = () => {
-	onBrowse(doIt);
+	onBrowse(() => {
+		setNews(expanded);
+	});
 
-	const sidebarColumn = document.querySelector('[data-testid="sidebarColumn"]');
-
-	if (expanded) {
-		sidebarColumn.style.display = "block";
-	} else {
-		sidebarColumn.style.display = "none";
-	}
-
-	expanded = !expanded;
+	return () => {
+		expanded = !expanded;
+		setNews(expanded);
+	};
 };

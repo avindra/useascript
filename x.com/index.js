@@ -1,5 +1,5 @@
 import { setup as setupS } from "./sidebar.js";
-import { setup as setupT } from "./trends.js";
+import { setup as setupNews } from "./trends.js";
 
-setupT();
-setupS(() => setupT());
+const toggleNews = setupNews();
+setupS(() => toggleNews());
