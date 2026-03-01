@@ -17,12 +17,11 @@ export const setup = async (callback) => {
 	const icon = button.firstChild.firstChild;
 	icon.replaceWith(scroll);
 
-	scroll.parentNode.style.fontSize = "30px";
+	scroll.parentNode.style.fontSize = "25px";
 
 	const label = button.querySelector("span");
 	Object.assign(label.style, {
 		fontFamily: "monospace",
-		fontStyle: "italic",
 		fontSize: "smaller",
 	});
 	if (label) {
