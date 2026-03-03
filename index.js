@@ -20,6 +20,7 @@ switch (location.host) {
 			case "holy-bhagavad-gita.org":
 			case "google.com":
 			case "ggpht.com":
+			case "instagram.com":
 			case "npmjs.com":
 			case "reddit.com":
 			// biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional
