@@ -1,13 +1,17 @@
-import { sleep } from "../util.js";
+import { until } from "../util.js";
 
 /**
  * @param {Function} callback A method to invoke when button is clicked.
  */
 export const setup = async (callback) => {
-	await sleep(500);
+	until(
+		() => document.querySelector("header nav"),
+		(root) => init(root, callback),
+	);
+};
 
+const init = (root, callback) => {
 	// copy an existing button to use as a template for styling
-	const root = document.querySelector("header nav");
 	const link = root.firstChild;
 	const button = link.cloneNode(true);
 
