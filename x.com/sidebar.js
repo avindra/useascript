@@ -24,13 +24,13 @@ const init = (root, callback) => {
 	scroll.parentNode.style.fontSize = "25px";
 
 	const label = button.querySelector("span");
-	Object.assign(label.style, {
-		fontFamily: "monospace",
-		fontSize: "smaller",
-	});
+	// label is hidden at smaller resolutions
 	if (label) {
-		// label is hidden at smaller resolutions
 		label.textContent = "Useascript";
+		Object.assign(label.style, {
+			fontFamily: "monospace",
+			fontSize: "smaller",
+		});
 	}
 	button.removeAttribute("href");
 	button.onclick = callback;
