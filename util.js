@@ -24,9 +24,9 @@ export const onBrowse = (doit) => {
  * Waits for a condition to be true and then performs an action.
  * Useful for waiting for elements to appear in the DOM.
  *
- * @param {*} fetcher   A function that returns an element or not
- * @param {*} action    A function that is called with the element once it is available
- * @param {*} timeout   Maximum time to wait for the element (default: 10 seconds)
+ * @param {Function}  fetcher   A function that returns an element or not
+ * @param {Function}  action    A function that is called with the element once it is available
+ * @param {number}    timeout   Maximum time to wait for the element (default: 10 seconds)
  */
 export const until = (fetcher, action, timeout = 10000) => {
 	const checker = setInterval(() => {
