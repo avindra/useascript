@@ -1,4 +1,4 @@
-import { sleep } from "../util.js";
+import { until } from "../util.js";
 
 /**
  * revival of
@@ -43,20 +43,14 @@ if (["/media"].includes(loc)) {
 }
 
 // hide multi-reddits by default
-(async () => {
-	while (true) {
-		const customFeeds = document.querySelector(
-			'[aria-controls="multireddits_section"]',
-		);
-		if (customFeeds) {
-			if (customFeeds.ariaExpanded === "true") {
-				customFeeds.click();
-			}
-			break;
+until(
+	() => document.querySelector('[aria-controls="multireddits_section"]'),
+	(node) => {
+		if (node.ariaExpanded === "true") {
+			node.click();
 		}
-		await sleep(500);
-	}
-})();
+	},
+);
 
 setTimeout(() => {
 	run_it(document.querySelector("main"));
