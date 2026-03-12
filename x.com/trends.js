@@ -2,14 +2,11 @@ import { onBrowse, until } from "../util.js";
 
 let expanded = true;
 
-const single = (xpath, node = document) =>
-	document.evaluate(xpath, node, null, 9, null)?.singleNodeValue;
-
 const setNews = (_expanded) => {
 	const target = _expanded ? "100%" : "600px";
 
 	until(
-		() => single(`//*[@data-testid="primaryColumn"]`),
+		() => document.body.querySelector('[data-testid="primaryColumn"]'),
 		(primaryColumn) => {
 			primaryColumn.style.maxWidth = target;
 			until(
