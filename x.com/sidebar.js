@@ -16,8 +16,7 @@ const init = (root, callback) => {
 	const button = link.cloneNode(true);
 
 	// setup scroll icon
-	const scroll = document.createTextNode("s");
-	scroll.textContent = "📜";
+	const scroll = document.createTextNode("📜");
 	const icon = button.firstChild.firstChild;
 	icon.replaceWith(scroll);
 
