@@ -31,7 +31,7 @@ document.head.appendChild(
 	}),
 );
 
-const repos = document.getElementById("repository");
+const sidebar = document.querySelector('[aria-label="Package sidebar"]');
 
 const list = document.createElement("ul");
 
@@ -49,9 +49,9 @@ function main() {
 	const pkg = document.title.substring(0, document.title.length - 6);
 
 	const sites = [
+		["npmgraph", `https://npmgraph.js.org/?q=${pkg}`],
 		["Bundlephobia", `https://bundlephobia.com/package/${pkg}`],
 		["anvaka", `https://npm.anvaka.com/#/view/2d/${pkg}`],
-		["npmgraph", `https://npmgraph.js.org/?q=${pkg}`],
 		["Packagephobia", `https://packagephobia.com/result?p=${pkg}`],
 		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
 		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
@@ -63,9 +63,23 @@ function main() {
 		list.append(listItem(label, site));
 	}
 
-	repos.parentNode.append(list);
+	sidebar.prepend(list);
+	sidebar.prepend(
+		Object.assign(document.createElement("h3"), {
+			textContent: "Analyze",
+			className: "c84e15be f5 mt2 pt2 mb0",
+		}),
+	);
 }
 
-if (repos) {
+if (sidebar) {
+	const checkers = ["https://bundlephobia.com/", "https://npmgraph.js.org/"];
+
+	for (const checker of checkers) {
+		const link = document.querySelector(`[href^="${checker}"]`);
+		if (link) {
+			link.remove();
+		}
+	}
 	main();
 }
