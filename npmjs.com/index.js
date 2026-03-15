@@ -57,6 +57,8 @@ function main() {
 		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
 		["deps.dev", `https://deps.dev/npm/${pkg}`],
 		["npmx", `https://npmx.dev/package/${pkg}`],
+		["socket.dev", `https://socket.dev/npm/package/${pkg}`],
+		["snyk", `https://snyk.io/advisor/npm-package/${pkg}`],
 	];
 
 	for (const [label, site] of sites) {
@@ -73,7 +75,12 @@ function main() {
 }
 
 if (sidebar) {
-	const checkers = ["https://bundlephobia.com/", "https://npmgraph.js.org/"];
+	const checkers = [
+		"https://bundlephobia.com/",
+		"https://npmgraph.js.org/",
+		"https://socket.dev/npm/package",
+		"https://snyk.io/advisor/npm-package",
+	];
 
 	for (const checker of checkers) {
 		const link = document.querySelector(`[href^="${checker}"]`);
