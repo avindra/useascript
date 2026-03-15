@@ -75,15 +75,13 @@ function main() {
 }
 
 if (sidebar) {
-	const checkers = [
+	for (const base of [
 		"https://bundlephobia.com/",
 		"https://npmgraph.js.org/",
 		"https://socket.dev/npm/package",
 		"https://snyk.io/advisor/npm-package",
-	];
-
-	for (const checker of checkers) {
-		const link = document.querySelector(`[href^="${checker}"]`);
+	]) {
+		const link = document.querySelector(`[href^="${base}"]`);
 		if (link) {
 			link.remove();
 		}
