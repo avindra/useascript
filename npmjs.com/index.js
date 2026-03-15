@@ -31,7 +31,7 @@ document.head.appendChild(
 	}),
 );
 
-const repos = document.getElementById("repository");
+const sidebar = document.querySelector('[aria-label="Package sidebar"]');
 
 const list = document.createElement("ul");
 
@@ -49,23 +49,44 @@ function main() {
 	const pkg = document.title.substring(0, document.title.length - 6);
 
 	const sites = [
+		["npmgraph", `https://npmgraph.js.org/?q=${pkg}`],
 		["Bundlephobia", `https://bundlephobia.com/package/${pkg}`],
 		["anvaka", `https://npm.anvaka.com/#/view/2d/${pkg}`],
-		["npmgraph", `https://npmgraph.js.org/?q=${pkg}`],
 		["Packagephobia", `https://packagephobia.com/result?p=${pkg}`],
 		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
 		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
 		["deps.dev", `https://deps.dev/npm/${pkg}`],
 		["npmx", `https://npmx.dev/package/${pkg}`],
+		["socket.dev", `https://socket.dev/npm/package/${pkg}`],
+		["snyk", `https://snyk.io/advisor/npm-package/${pkg}`],
 	];
 
 	for (const [label, site] of sites) {
 		list.append(listItem(label, site));
 	}
 
-	repos.parentNode.append(list);
+	sidebar.prepend(list);
+	sidebar.prepend(
+		Object.assign(document.createElement("h3"), {
+			textContent: "Analyze",
+			className: "c84e15be f5 mt2 pt2 mb0",
+		}),
+	);
 }
 
-if (repos) {
+if (sidebar) {
+	const checkers = [
+		"https://bundlephobia.com/",
+		"https://npmgraph.js.org/",
+		"https://socket.dev/npm/package",
+		"https://snyk.io/advisor/npm-package",
+	];
+
+	for (const checker of checkers) {
+		const link = document.querySelector(`[href^="${checker}"]`);
+		if (link) {
+			link.remove();
+		}
+	}
 	main();
 }
