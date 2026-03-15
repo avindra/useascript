@@ -23,6 +23,7 @@ function main() {
 		["pkg-size.dev", `https://pkg-size.dev/${pkg}`],
 		["npm-stat", `https://npm-stat.com/charts.html?package=${pkg}`],
 		["deps.dev", `https://deps.dev/npm/${pkg}`],
+		["npmx", `https://npmx.dev/package/${pkg}`],
 	];
 
 	for (const [label, site] of sites) {
@@ -33,5 +34,5 @@ function main() {
 }
 
 if (repos) {
-	setTimeout(main, 500);
+	main();
 }
