@@ -1,4 +1,4 @@
-import { until } from "../util.js";
+import { onBrowse, until } from "../util.js";
 
 /**
  * revival of
@@ -52,9 +52,18 @@ until(
 	},
 );
 
-setTimeout(() => {
-	run_it(document.querySelector("main"));
-}, 1000);
+onBrowse(() => {
+	until(() => document.querySelector("main"), run_it);
+
+	until(() => document.querySelector("shreddit-post-text-body"), run_it);
+
+	until(() => {
+		const tree = document.querySelector("shreddit-comment-tree");
+		if (tree.scrollHeight > 0) {
+			return tree;
+		}
+	}, run_it);
+});
 
 /**
  *
@@ -130,5 +139,4 @@ function run_it(node) {
 			}
 		}
 	}
-	node.marked = true;
 }

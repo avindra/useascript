@@ -1,3 +1,5 @@
+import { until } from "../util.js";
+
 /**
  * Show channel ID on pages that use "pretty" URLS
  */
@@ -14,9 +16,9 @@ if (
 	const p = document.createElement("p");
 	p.appendChild(chanId);
 
-	setTimeout(() => {
-		document
-			.querySelector(".yt-page-header-view-model__page-header-title")
-			.nextElementSibling.prepend(p);
-	}, 1500); // wait for the header to load
+	until(
+		() =>
+			document.querySelector(".yt-page-header-view-model__page-header-title"),
+		(title) => title.nextElementSibling.prepend(p),
+	);
 }
