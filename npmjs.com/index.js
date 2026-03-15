@@ -1,3 +1,27 @@
+const styles = `
+main {
+background-color: rebeccapurple;
+}
+#top {
+background-color: wheat;
+}
+header div:last-child {
+background-color: blanchedalmond;
+}
+header div:nth-child(2) {
+display:none;
+}
+#footer {
+background-color: #dfbf3f;
+}
+`;
+document.head.appendChild(
+	Object.assign(document.createElement("style"), {
+		type: "text/css",
+		innerText: styles,
+	}),
+);
+
 const repos = document.getElementById("repository");
 
 const list = document.createElement("ul");

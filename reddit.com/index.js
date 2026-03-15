@@ -59,7 +59,7 @@ onBrowse(() => {
 
 	until(() => {
 		const tree = document.querySelector("shreddit-comment-tree");
-		if (tree.scrollHeight > 0) {
+		if (tree && tree.scrollHeight > 0) {
 			return tree;
 		}
 	}, run_it);
