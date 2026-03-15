@@ -14,6 +14,15 @@ display:none;
 #footer {
 background-color: #dfbf3f;
 }
+footer.mt4 {
+margin-top:0;
+}
+[role="tabpanel"] {
+background-color:#ffd381;
+}
+#main > div > div:first-child {
+background-color:#ffdae5;
+}
 `;
 document.head.appendChild(
 	Object.assign(document.createElement("style"), {
