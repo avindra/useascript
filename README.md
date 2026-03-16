@@ -17,9 +17,15 @@ It has a corresponding `.meta.js` so updates will work automatically.
 
 ## Development
 
+We use `esbuild` for development and production builds.
+
 ### Method A
 
-This has only been tested with `Tampermonkey > Settings > Security > Modify existing content security policy (CSP) headers` set to `Remove entirely (possibly unsecure)`. Use your favorite local http server (e.g., [python's http.server](https://github.com/avindra/dotfiles/blob/src/.local/bin/http)).
+Use `make dev` to spin up `esbuild`'s built-in HTTP server.
+
+You will have to configure a CSP bypass for sites that define such policies (many do). This can be done via `Tampermonkey > Settings > Security > Modify existing content security policy (CSP) headers`. Set this option to `Remove entirely (possibly unsecure)`. Firefox and Chrome are both known to work.
+
+Then, install the following script hook:
 
 ```js
 // ==UserScript==
@@ -35,8 +41,7 @@ import("http://localhost:5000/index.js");
 
 ### Method B
 
-Run `make` to build the bundle. It requires `esbuild`. The script will go directly to your clipboard (assuming Wayland) using `wl-copy`. Then, paste the result into your userscript manager's editor. A less cumbersome method is desired, please suggest a better way if you know one!
-
+Run `make snag` to build the bundle. The script will go directly to your clipboard (assuming Wayland) using `wl-copy`. Then, paste the result into your userscript manager's editor. Although this works, it is highly recommended to instead use `Method A` which is much more convenient to develop with.
 
 ## License
 
