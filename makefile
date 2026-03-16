@@ -1,5 +1,10 @@
-.PHONY: bundle snag
-.DEFAULT_GOAL := snag
+.PHONY: bundle snag dev
+.DEFAULT_GOAL := dev
+
+PORT ?= 5000
+
+dev:
+	esbuild --servedir=. --serve=$(PORT) --cors-origin=*
 
 bundle:
 	esbuild index.js --bundle --minify --outfile=useascript.user.js

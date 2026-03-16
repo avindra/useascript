@@ -81,7 +81,7 @@ if (sidebar) {
 		"https://socket.dev/npm/package",
 		"https://snyk.io/advisor/npm-package",
 	]) {
-		const link = document.querySelector(`[href^="${base}"]`);
+		const link = sidebar.querySelector(`[href^="${base}"]`);
 		if (link) {
 			link.remove();
 		}
