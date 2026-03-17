@@ -12,7 +12,7 @@ export const killTCO = (primaryColumn) => {
 
 		for (const link of tcoLinks) {
 			const baseLink = link.innerText.replace(/\s+/g, "");
-			const realLink = baseLink.substring(0, baseLink.length - 1);
+			const realLink = baseLink.replace(/…$/, "");
 
 			if (realLink.startsWith("http")) {
 				link.href = realLink;
