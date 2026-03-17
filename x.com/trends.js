@@ -1,5 +1,7 @@
 import { onBrowse, until } from "../util.js";
 
+import { killTCO } from "./killTCO.js";
+
 let expanded = true;
 
 const setNews = (_expanded) => {
@@ -14,7 +16,9 @@ const setNews = (_expanded) => {
 					const el = primaryColumn.querySelector('[aria-level="1"]');
 					// n.b. we are looking for the grandparent
 					if (el) {
-						return el.parentNode.parentNode;
+						const grandparent = el.parentNode.parentNode;
+						killTCO(grandparent);
+						return grandparent;
 					}
 				},
 				(tl) => (tl.style.maxWidth = target),
@@ -23,7 +27,7 @@ const setNews = (_expanded) => {
 	);
 
 	until(
-		() => document.querySelector('[data-testid="sidebarColumn"]'),
+		() => document.body.querySelector('[data-testid="sidebarColumn"]'),
 		(sidebarColumn) =>
 			(sidebarColumn.style.display = expanded ? "none" : "block"),
 	);
