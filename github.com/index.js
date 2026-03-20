@@ -1,25 +1,27 @@
-import { onBrowse, sleep } from "./../util.js";
+import { onBrowse, sleep, until } from "./../util.js";
 
-let pending = false;
 async function main() {
 	const fileRegex = /\/([^/]+)\/([^/]+)\/blob\/(.+)\/(.+)/;
 	const fileMatch = location.pathname.match(fileRegex);
 
 	if (fileMatch) {
-		const btns = document.querySelector(
-			"#repos-sticky-header div[class^=prc-ButtonGroup]",
+		until(
+			() =>
+				document.querySelector(
+					"#repos-sticky-header div[class^=prc-ButtonGroup]",
+				),
+			(btns) => {
+				const [, user, repo, branch, file] = fileMatch;
+
+				const href = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
+				const A = Object.assign(document.createElement("a"), {
+					href,
+					textContent: "JsDelivr",
+					className: "btn-sm btn BtnGroup-item",
+				});
+				btns.appendChild(A);
+			},
 		);
-		if (btns) {
-			const [, user, repo, branch, file] = fileMatch;
-
-			const jsd = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
-			const a = document.createElement("a");
-			a.href = jsd;
-			a.textContent = "JsDelivr";
-			a.className = "btn-sm btn BtnGroup-item";
-
-			btns.appendChild(a);
-		}
 	} else if (/\/compare\//.test(location.pathname)) {
 		const getCommits = () =>
 			document.querySelectorAll(
@@ -51,14 +53,6 @@ async function main() {
 			ctr.appendChild(gen);
 		}
 	}
-	pending = false;
 }
 
-onBrowse(async () => {
-	if (pending) return;
-
-	pending = true;
-	await sleep(1000);
-
-	setTimeout(main, 1000);
-});
+onBrowse(main);
