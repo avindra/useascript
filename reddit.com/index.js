@@ -9,9 +9,10 @@ const styles = `
 	.titText {font-size:smaller;color:darkSlateGray;font-weight:bold}
 	.favicon {padding-right:17px;font-weight:bold;background-repeat:no-repeat;background-position:right center}
 `;
-const sheet = document.createElement("style");
-sheet.type = "text/css";
-sheet.innerText = styles;
+const sheet = Object.assign(document.createElement("style"), {
+	type: "text/css",
+	innerText: styles,
+});
 document.head.appendChild(sheet);
 
 const sections = location.pathname.split(/(?!^)\//);

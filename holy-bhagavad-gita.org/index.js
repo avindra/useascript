@@ -21,9 +21,10 @@ const styles = `
 		background-image: none;
 	}
 `;
-const sheet = document.createElement("style");
-sheet.type = "text/css";
-sheet.innerText = styles;
+const sheet = Object.assign(document.createElement("style"), {
+	type: "text/css",
+	innerText: styles,
+});
 document.head.appendChild(sheet);
 
 /**

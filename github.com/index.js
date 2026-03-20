@@ -12,13 +12,14 @@ async function main() {
 		if (btns) {
 			const [, user, repo, branch, file] = fileMatch;
 
-			const jsd = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
-			const a = document.createElement("a");
-			a.href = jsd;
-			a.textContent = "JsDelivr";
-			a.className = "btn-sm btn BtnGroup-item";
+			const href = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${file}`;
+			const A = Object.assign(document.createElement("a"), {
+				href,
+				textContent: "JsDelivr",
+				className: "btn-sm btn BtnGroup-item",
+			});
 
-			btns.appendChild(a);
+			btns.appendChild(A);
 		}
 	} else if (/\/compare\//.test(location.pathname)) {
 		const getCommits = () =>
