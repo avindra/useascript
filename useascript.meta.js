@@ -6,4 +6,5 @@
 // @author       Avindra Goolcharan
 // @match        *://*/*
 // @updateURL    https://dra.vin/useascript/useascript.meta.js
+// @downloadURL  https://dra.vin/useascript/useascript.user.js
 // ==/UserScript==
