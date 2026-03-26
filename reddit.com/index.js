@@ -74,7 +74,7 @@ function run_it(node) {
 		for (const element of node.querySelectorAll("a")) {
 			const href = element.getAttribute("href");
 			if (!href) {
-				return;
+				continue;
 			}
 			if (element.title) {
 				if (href !== "/s") {
