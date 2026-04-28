@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         useascript
 // @namespace    https://dra.vin/
-// @version      0.9.0
+// @version      0.10.0
 // @description  A compendium of userscripts for the Web
 // @author       Avindra Goolcharan
 // @match        *://*/*

@@ -17,8 +17,7 @@ if (
 	p.appendChild(chanId);
 
 	until(
-		() =>
-			document.querySelector(".yt-page-header-view-model__page-header-title"),
+		() => document.querySelector(".ytPageHeaderViewModelContentMetadata"),
 		(title) => title.nextElementSibling.prepend(p),
 	);
 }
