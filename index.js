@@ -19,6 +19,7 @@ switch (location.host) {
 			case "britishmuseum.org":
 			case "holy-bhagavad-gita.org":
 			case "google.com":
+			case "news.ycombinator.com":
 			case "ggpht.com":
 			case "instagram.com":
 			case "npmjs.com":
