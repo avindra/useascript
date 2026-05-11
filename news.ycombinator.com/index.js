@@ -13,9 +13,11 @@ const styles = `
 	.c00 {
 		color: white
 	}
-
-	a:link, a:visited {
+	.c00 a:link, a:link {
 		color: #ffc071;
+	}
+	a:visited {
+		color: #7e5828;
 	}
 `;
 const sheet = Object.assign(document.createElement("style"), {

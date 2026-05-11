@@ -27,9 +27,11 @@
 	.c00 {
 		color: white
 	}
-
-	a:link, a:visited {
+	.c00 a:link, a:link {
 		color: #ffc071;
+	}
+	a:visited {
+		color: #7e5828;
 	}
 `,ie=Object.assign(document.createElement("style"),{type:"text/css",innerText:re});document.head.appendChild(ie)});var O=d(()=>{var le=`
 main {
