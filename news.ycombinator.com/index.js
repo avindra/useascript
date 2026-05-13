@@ -25,3 +25,21 @@ const sheet = Object.assign(document.createElement("style"), {
 	innerText: styles,
 });
 document.head.appendChild(sheet);
+
+const anchor = document.body.querySelector(".hnname").nextElementSibling;
+
+anchor.prepend(
+	Object.assign(document.createElement("a"), {
+		href: "best",
+		textContent: "best",
+	}),
+	document.createTextNode(" | "),
+);
+
+anchor.prepend(
+	Object.assign(document.createElement("a"), {
+		href: "leaders",
+		textContent: "leaders",
+	}),
+	document.createTextNode(" | "),
+);
