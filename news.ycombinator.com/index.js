@@ -24,6 +24,11 @@ const styles = `
 		padding-left: 1em;
 		color: #ffc071;
 	}
+
+	table.comment-tree .comment a {
+		max-width: unset;
+		text-overflow: unset;
+	}
 `;
 const sheet = Object.assign(document.createElement("style"), {
 	type: "text/css",
@@ -128,5 +133,10 @@ function upgradeComment(comment) {
 	text.innerHTML = parseComment(raw);
 	processed.add(comment);
 }
+document.querySelectorAll(".commtext a").forEach((link) => {
+	if (link.href !== link.textContent) {
+		link.textContent = link.href;
+	}
+});
 
 document.querySelectorAll(".athing.comtr").forEach(upgradeComment);
