@@ -21,8 +21,9 @@ const styles = `
 	}
 	blockquote {
 		border-left: 4px solid #ffc071;
-		padding-left: 1em;
+		padding-left: .5em;
 		color: #ffc071;
+		margin-left: .5em;
 	}
 
 	table.comment-tree .comment a {
