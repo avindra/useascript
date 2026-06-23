@@ -3,22 +3,21 @@
  */
 
 /**
- * - replace battlefield image with solid blue color
- * - remove copyright banner
- * - fix janky search box becoming too high
+ * rm copyright banner
+ * rm book order promo
+ * rm stay connected section
+ * rm top nav
+ * rm empty tamil nav
  */
 const styles = `
-	.copyright-warning,
-	.gita-side-content > div > div:nth-child(2),
-	.gita-side-content > div > div:nth-child(3),
-	.search-text,
-	.gsib_b {
+	.footer-bottom > :last-child,
+	.book-order-promo,
+	.bg-stay-connected-section,
+	.bg-page-top-nav,
+	header .upper-container,
+	.bg-page-top-nav-tamil
+	{
 		display:none;
-	}
-
-	body {
-		background-color: #131b42;
-		background-image: none;
 	}
 `;
 const sheet = Object.assign(document.createElement("style"), {
@@ -35,8 +34,6 @@ const verse = document.querySelector(".bg-verse-audio audio");
 
 if (verse) {
 	verse.onended = () => {
-		const A = document.querySelector(".verse-navigator a.next-element");
-
 		const verses = Array.from(
 			document.querySelectorAll(".actual-verse-navigator a"),
 		);
@@ -45,12 +42,14 @@ if (verse) {
 			".actual-verse-navigator a.active",
 		);
 
-		// chapter end
 		if (verses[verses.length - 1] === currentVerse) {
-			const B = document.querySelector(".chapter-navigator a.next-element");
-			B.click();
+			const nextChapter = document.querySelector(
+				".chapter-navigator a.next-element",
+			);
+			nextChapter.click();
 		} else {
-			A.click();
+			const nextVerse = currentVerse.nextElementSibling;
+			nextVerse.click();
 		}
 	};
 	try {
